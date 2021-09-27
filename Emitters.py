@@ -9,7 +9,7 @@ class EmitterShapes(Enum):
 # A particle has  -  speed, life, color, transparency, size
 
 class EmitterBase():
-    def __init__(self, x, y, eR, eS, particleBase)
+    def __init__(self, x, y, eR, eS, particleBase):
         self.particles = []
         
         self.x = x
