@@ -1,3 +1,4 @@
+from Emitters import ParticleBase
 import math
 import random
 import time
@@ -26,9 +27,14 @@ def main():
     from SettingsClasses.Settings import Settings
     Settings.startup()
 
+    from Emitters import EmitterBase
+    from Emitters import ParticleBase
+
+    emitter = EmitterBase(100,100,10, ParticleBase(1,100,(100,100,100),100,5))
+
     while (True):
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
             Settings.handle_event(event)
@@ -38,6 +44,9 @@ def main():
         Settings.update()
         Settings.draw(screen)
         Settings.writeInfo()
+
+        emitter.update()
+        emitter.draw(screen)
 
         pygame.display.update()
         

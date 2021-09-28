@@ -130,6 +130,7 @@ class ToggleButtonList():
       self.onIndex = 0
          
    def update(self):
+      oneOn = False
       for index in range(len(self.list)):
          if self.list[index].justClicked:
             self.list[index].justClicked = False
@@ -137,10 +138,12 @@ class ToggleButtonList():
             for button2 in self.list:
                if button2 != self.list[index]:
                   button2.turnOff()
+            oneOn = True
             break
+      if not oneOn:
+         self.onIndex = -1
       for button in self.list:
          button.update()
-      print(self.onIndex)
    
    def append(self, ToggleButton):
       self.list.append(ToggleButton)
